@@ -1,18 +1,18 @@
 {
   "name": "ardorjs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Local transaction signing for ardor transactions, and ardor address creations",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
-  "author": "Tox <toxiapo@gmail.com>",
+  "author": "MrV <mrv.crypto@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "buffer": "^5.0.0",
+    "buffer": "^5.2.1",
     "crypto-js": "^3.1.8",
     "jsbn": "0.0.0",
-    "pako": "^1.0.3"
+    "pako": "^1.0.6"
   },
   "devDependencies": {
     "mocha": "^3.5.3"
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/toxiapo/ardorjs.git"
+    "url": "git+https://github.com/mrv777/ardorjs.git"
   },
   "keywords": [
     "ardor",
     "sign"
   ],
   "bugs": {
-    "url": "https://github.com/toxiapo/ardorjs/issues"
+    "url": "https://github.com/mrv777/ardorjs/issues"
   },
-  "homepage": "https://github.com/toxiapo/ardorjs#readme"
+  "homepage": "https://github.com/mrv777/ardorjs#readme"
 }
