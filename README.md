@@ -6,3 +6,8 @@ Original authors: [toenu23](https://github.com/toenu23/nxtjs), modified for Ardo
 
 ### npm install
 `npm install ardorjs`
+
+### Known Issues
+`Module not found: Error: Can't resolve 'crypto'`
+Download patch.js: https://gist.github.com/niespodd/1fa82da6f8c901d1c33d2fcbb762947d
+and run `node patch.js`
