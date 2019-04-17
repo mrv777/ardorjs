@@ -4,7 +4,7 @@
   "description": "Local transaction signing for ardor transactions, and ardor address creations",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha --require @babel/register ./test/* --recursive"
   },
   "author": "MrV <mrv.crypto@gmail.com>",
   "license": "MIT",
@@ -15,6 +15,11 @@
     "pako": "^1.0.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
     "mocha": "^3.5.3"
   },
   "directories": {
