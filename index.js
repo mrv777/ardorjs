@@ -7,7 +7,9 @@
     secretPhraseToPublicKey: account.secretPhraseToPublicKey,
     publicKeyToAccountId: account.publicKeyToAccountId,
     secretPhraseToAccountId: account.secretPhraseToAccountId,
-    signTransactionBytes: account.signTransactionBytes
+    signTransactionBytes: account.signTransactionBytes,
+    verifyTransactionBytes: account.verifyTransactionBytes,
+    generateToken: account.generateToken
   };
 
 })();
