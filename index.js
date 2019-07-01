@@ -9,7 +9,8 @@
     secretPhraseToAccountId: account.secretPhraseToAccountId,
     signTransactionBytes: account.signTransactionBytes,
     verifyTransactionBytes: account.verifyTransactionBytes,
-    generateToken: account.generateToken
+    generateToken: account.generateToken,
+    decryptNote: account.decryptNote
   };
 
 })();
