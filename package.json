@@ -1,6 +1,6 @@
 {
   "name": "ardorjs",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Local transaction signing for ardor transactions, and ardor address creations",
   "main": "index.js",
   "scripts": {
