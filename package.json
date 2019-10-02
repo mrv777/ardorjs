@@ -9,15 +9,15 @@
   "author": "MrV <mrv.crypto@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "buffer": "^5.2.1",
+    "buffer": "^5.4.3",
     "crypto-js": "^3.1.8",
     "jsbn": "0.0.0",
     "pako": "^1.0.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/register": "^7.4.0",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
     "mocha": "^3.5.3"
