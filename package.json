@@ -4,7 +4,7 @@
   "description": "Local transaction signing for ardor transactions, and ardor address creations",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require @babel/register ./test/* --recursive"
+    "test": "jest"
   },
   "author": "MrV <mrv.crypto@gmail.com>",
   "license": "MIT",

@@ -1,23 +1,17 @@
-
-import {
-  secretPhraseToPublicKey,
-  signTransactionBytes,
-  publicKeyToAccountId,
-  rsConvert,
-  verifyTransactionBytes,
-} from "../../lib/account";
+var account = require('../../index');
 
 const PASSPHRASE = "skin grey itself dry throughout hook moonlight egg fly pack bought moral";
 const PUBLICKEY = "becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32";
 const ACCOUNTID = "5950989589159323752";
 const ACCOUNTRS = "ARDOR-9C5A-J3PY-UEG3-7BK77";
 
-describe("Ardor functions", () => {
 
-  describe("secretPhraseToPublicKey", () => {
+describe("Ardor functions", function () {
 
-    it('should return the correct publicKey', () => {
-      expect(secretPhraseToPublicKey(PASSPHRASE)).to.be.equal(PUBLICKEY);
+  describe("secretPhraseToPublicKey", function () {
+
+    it('should return the correct publicKey', function ()  {
+      expect(account.secretPhraseToPublicKey(PASSPHRASE)).toBe(PUBLICKEY);
     });
 
   });
@@ -25,13 +19,11 @@ describe("Ardor functions", () => {
   describe("publicKeyToAccountId", () => {
 
     it("should return the correct account id", () => {
-      expect(publicKeyToAccountId(PUBLICKEY, true)).to.be.equal(ACCOUNTID);
-
+      expect(account.publicKeyToAccountId(PUBLICKEY, true)).toBe(ACCOUNTID);
     });
 
     it("should return the correct account RS", () => {
-      expect(publicKeyToAccountId(PUBLICKEY, false)).to.be.equal(ACCOUNTRS);
-
+      expect(account.publicKeyToAccountId(PUBLICKEY, false)).toBe(ACCOUNTRS);
     });
 
   });
@@ -39,12 +31,7 @@ describe("Ardor functions", () => {
   describe("rsConvert", () => {
 
     it("should return the correct account id and account RS", () => {
-      const account = {
-        account: ACCOUNTID,
-        accountRS: ACCOUNTRS
-      }
-      expect(rsConvert(ACCOUNTID)).to.be.eql(account);
-
+      expect(account.rsConvert(ACCOUNTID)).toStrictEqual({ account: ACCOUNTID, accountRS: ACCOUNTRS });
     });
 
   });
@@ -58,7 +45,7 @@ describe("Ardor functions", () => {
         const unsignedTxBytes = "02000000000001711174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc72e803000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aad6190065b5226ed2a6603900000000000000000000000000000000000000000000000000000000000000000000000000000000";
         const signedTxBytes = "02000000000001711174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc72e803000000000000c0c62d0000000000bfb61a5240d5552d16809f81206f4696313b3da3324cb17150b1202ac4faef0c1a96ccc53afd3e29722b84b29589d3c0c40dd55dc8a4a5d49ffcc367dee106a6aad6190065b5226ed2a6603900000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
-        expect(signTransactionBytes(unsignedTxBytes, PASSPHRASE)).to.be.equal(signedTxBytes);
+        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(signedTxBytes);
       });
 
     });
@@ -70,7 +57,7 @@ describe("Ardor functions", () => {
         const unsignedTxBytes = "02000000020101fd1174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc720000000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b9d61900082fb63f13ff402a0000000001ed61e00849facc000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
         const expectedOutput = "02000000020101fd1174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc720000000000000000c0c62d00000000000da242993f662e0bb759b6d69d6dd64a1defd2de97da0e098bcd0927c63b1104ae427925ce1c9d56b09c666e28ae3572160f400cce6dd3b08fd607bf070fee01b9d61900082fb63f13ff402a0000000001ed61e00849facc000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
-        expect(signTransactionBytes(unsignedTxBytes, PASSPHRASE)).to.be.equal(expectedOutput);
+        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(expectedOutput);
       });
 
     });
@@ -111,7 +98,7 @@ describe("Ardor functions", () => {
         "height": 2147483647
       };
 
-      expect(verifyTransactionBytes(unsignedTxBytes, transactionType, transactionJSON, PUBLICKEY)).to.be.equal(true);
+      expect(account.verifyTransactionBytes(unsignedTxBytes, transactionType, transactionJSON, PUBLICKEY)).toBe(true);
     });
 
   });
