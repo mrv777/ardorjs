@@ -19,8 +19,7 @@
     "@babel/preset-env": "^7.6.2",
     "@babel/register": "^7.6.2",
     "babel-preset-env": "^1.7.0",
-    "chai": "^4.2.0",
-    "mocha": "^3.5.3"
+    "jest": "^24.9.0"
   },
   "directories": {
     "test": "test"
