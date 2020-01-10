@@ -310,7 +310,7 @@ module.exports = function() {
 
 		adr = adr.replace(/(^\s+)|(\s+$)/g, '').toUpperCase();
 
-		if (adr.indexOf('ARDOR-') == 0) adr = adr.substr(4);
+		if (adr.indexOf('ARDOR-') == 0) adr = adr.substr(6);
 
 		if (adr.match(/^\d{1,20}$/g)) // account id
 		{

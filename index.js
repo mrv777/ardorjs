@@ -10,7 +10,9 @@
     signTransactionBytes: account.signTransactionBytes,
     verifyTransactionBytes: account.verifyTransactionBytes,
     generateToken: account.generateToken,
-    decryptNote: account.decryptNote
+    decryptNote: account.decryptNote,
+    encryptNote: account.encryptNote,
+    encryptMessage: account.encryptMessage
   };
 
 })();
