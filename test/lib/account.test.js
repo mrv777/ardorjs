@@ -103,4 +103,25 @@ describe("Ardor functions", function () {
 
   });
 
+  describe('message encryption', function() {
+    it('encrypt and decrypt a message', function(done) {
+      var message_to_encrypt = 'My encrypted gift to you!';
+
+      var encrypted = account.encryptMessage(
+        text = message_to_encrypt, 
+        senderSecretPhrase = PASSPHRASE,
+        recipientPublicKey = 'e0914433305c721bbc5bb40f41ad3bc22304aac29d3c25ee8fb1bf40dde5ff3b'
+      );
+
+      var decrypted = account.decryptMessage(
+        message = encrypted.encryptedMessageData,
+        nonce = encrypted.encryptedMessageNonce,
+        senderPublicKey = 'e0914433305c721bbc5bb40f41ad3bc22304aac29d3c25ee8fb1bf40dde5ff3b',
+        secretPhrase = PASSPHRASE
+      );
+      expect(decrypted.message).toBe(message_to_encrypt);
+      done();
+    });
+  });
+
 });

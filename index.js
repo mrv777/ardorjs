@@ -12,7 +12,8 @@
     generateToken: account.generateToken,
     decryptNote: account.decryptNote,
     encryptNote: account.encryptNote,
-    encryptMessage: account.encryptMessage
+    encryptMessage: account.encryptMessage,
+    decryptMessage: account.decryptMessage
   };
 
 })();
