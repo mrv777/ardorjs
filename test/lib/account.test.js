@@ -62,45 +62,95 @@ describe("Ardor functions", function () {
 
     });
 
+    describe("sendMoneyV2", () => {
+
+      it("should match unsignedTxBytes with signedTexBytes from the API", () => {
+        // Generated on with Ardor v3.0.0e
+
+        const unsignedTxBytes = "02000000000002a660ca070f0068a8e36b8029965268a8e36b80299652006d7c4d00000000a0252600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000df5372f3a365f2fd00000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        //signature: b4e7a104d36bf273a71fdea8ed54c1d71bc0c9cba8bc3ff92705d210e3dc8104d636cc4a7387d7127ee62d340d7910ee587d94ffc215a55905a35c01502e7eab
+        const signedTxBytes =   "02000000000002a660ca070f0068a8e36b8029965268a8e36b80299652006d7c4d00000000a025260000000000b4e7a104d36bf273a71fdea8ed54c1d71bc0c9cba8bc3ff92705d210e3dc8104d636cc4a7387d7127ee62d340d7910ee587d94ffc215a55905a35c01502e7eab00000000df5372f3a365f2fd00000000000000000000000000000000000000000000000000000000000000000000000000000000";
+
+        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(signedTxBytes);
+      });
+
+    });
   });
 
   describe("verifyTransactionBytes", () => {
+    describe("verifyTransactionBytes V1", () => {
+      it("should verify created transaction bytes", () => {
+        // Generated on http://localhost:26876/test Ardor v2.2.2
+        const unsignedTxBytes = "0200000002030105cd74020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec3200000000000000000000000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffe61900134a11dad8d6fdec0000000001ed61e00849facc0064000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        const transactionType = "2";
+        const transactionJSON = {
+          "senderPublicKey": "becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32",
+          "chain": 2,
+          "signature": "e4bc5ba95b69e97bae7e002e2eede9ed7d08c2576387de2ac9dc8bdaaf98e509de8417590eba621e07812b59dd0f5b43deb5332c1dc690427b819977fb5714ca",
+          "feeNQT": "3000000",
+          "type": 2,
+          "fullHash": "37b57ad6d27c4e82fd9aab8e57e5e35c8308512f8d0ca04e0a2946680023016a",
+          "version": 1,
+          "fxtTransaction": "0",
+          "phased": false,
+          "ecBlockId": "17077041588918635027",
+          "signatureHash": "bf7f790999e9a9fa2b81ae73d89b879645fecaff0f7ac19845c5b81244dc3e4f",
+          "attachment": {
+              "quantityQNT": "100",
+              "asset": "57696086837453293",
+              "priceNQTPerShare": "100",
+              "version.BidOrderPlacement": 1
+          },
+          "senderRS": "ARDOR-9C5A-J3PY-UEG3-7BK77",
+          "subtype": 3,
+          "amountNQT": "0",
+          "sender": "5950989589159323752",
+          "ecBlockHeight": 1697535,
+          "deadline": 15,
+          "timestamp": 41209093,
+          "height": 2147483647
+        };
 
-    it("should verify created transaction bytes", () => {
-      // Generated on http://localhost:26876/test Ardor v2.2.2
-      const unsignedTxBytes = "0200000002030105cd74020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec3200000000000000000000000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000ffe61900134a11dad8d6fdec0000000001ed61e00849facc0064000000000000006400000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-      const transactionType = "2";
-      const transactionJSON = {
-        "senderPublicKey": "becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32",
-        "chain": 2,
-        "signature": "e4bc5ba95b69e97bae7e002e2eede9ed7d08c2576387de2ac9dc8bdaaf98e509de8417590eba621e07812b59dd0f5b43deb5332c1dc690427b819977fb5714ca",
-        "feeNQT": "3000000",
-        "type": 2,
-        "fullHash": "37b57ad6d27c4e82fd9aab8e57e5e35c8308512f8d0ca04e0a2946680023016a",
-        "version": 1,
-        "fxtTransaction": "0",
-        "phased": false,
-        "ecBlockId": "17077041588918635027",
-        "signatureHash": "bf7f790999e9a9fa2b81ae73d89b879645fecaff0f7ac19845c5b81244dc3e4f",
-        "attachment": {
-            "quantityQNT": "100",
-            "asset": "57696086837453293",
-            "priceNQTPerShare": "100",
-            "version.BidOrderPlacement": 1
-        },
-        "senderRS": "ARDOR-9C5A-J3PY-UEG3-7BK77",
-        "subtype": 3,
-        "amountNQT": "0",
-        "sender": "5950989589159323752",
-        "ecBlockHeight": 1697535,
-        "deadline": 15,
-        "timestamp": 41209093,
-        "height": 2147483647
-      };
-
-      expect(account.verifyTransactionBytes(unsignedTxBytes, transactionType, transactionJSON, PUBLICKEY)).toBe(true);
+        expect(account.verifyTransactionBytes(unsignedTxBytes, transactionType, transactionJSON, PUBLICKEY)).toBe(true);
+      });
     });
 
+    describe("verifyTransactionBytes V2", () => {
+      it("should verify created transaction bytes", () => {
+        // Generated on by Ardor v3.0.0
+        const txBytes = "020000000000029565ca070f0068a8e36b8029965268a8e36b80299652006d7c4d00000000a025260000000000681035c36a711add5b65812805ec3dff1d06df1500c11245b8bb66e1eaea1d0b14a7958466e0a3afa65e9ca3b80e8e4b368987e56689949101c2bacc00c2847d2e6c120035fdfee3a275ce8200000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        const transactionType = "2";
+        const transactionJSON = {
+            "senderPublicKey": "becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32",
+            "isBundled": true,
+            "chain": 2,
+            "signature": "681035c36a711add5b65812805ec3dff1d06df1500c11245b8bb66e1eaea1d0b14a7958466e0a3afa65e9ca3b80e8e4b368987e56689949101c2bacc00c2847d",
+            "feeNQT": "2500000",
+            "requestProcessingTime": 3,
+            "type": 0,
+            "fullHash": "b71536622d990ab6531a84495e606fa4057627747eadf38cd7e9d9d0c9dada8c",
+            "version": 2,
+            "fxtTransaction": "0",
+            "phased": false,
+            "ecBlockId": "9425600412603317557",
+            "signatureHash": "ce2cbd15c26fe2cc9407b9baf8b9dce5efc8b9f8ce5e96a6a44a1e2a1306ad76",
+            "attachment": {
+                "version.OrdinaryPayment": 0
+            },
+            "senderRS": "ARDOR-9C5A-J3PY-UEG3-7BK77",
+            "subtype": 0,
+            "amountNQT": "1300000000",
+            "sender": "5950989589159323752",
+            "recipientRS": "ARDOR-9C5A-J3PY-UEG3-7BK77",
+            "recipient": "5950989589159323752",
+            "ecBlockHeight": 1207342,
+            "deadline": 15,
+            "timestamp": 130704789,
+            "height": 2147483647
+        };
+        expect(account.verifyTransactionBytes(txBytes, transactionType, transactionJSON, PUBLICKEY)).toBe(true);
+      });
+    });
   });
 
 });
