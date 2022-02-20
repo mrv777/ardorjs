@@ -1,6 +1,7 @@
 module.exports = {
-    "roots": [
-      "<rootDir>/test"
-    ]
-    // "testEnvironment": "node"
-  }
+  preset: "ts-jest",
+  transform: {
+    "^.+\\.(ts|tsx)?$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest",
+  },
+};

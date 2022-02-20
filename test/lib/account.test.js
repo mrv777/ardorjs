@@ -1,23 +1,21 @@
-var account = require('../../index');
+import account from "../../index";
+//var account = require("../../index");
 
-const PASSPHRASE = "skin grey itself dry throughout hook moonlight egg fly pack bought moral";
-const PUBLICKEY = "becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32";
+const PASSPHRASE =
+  "skin grey itself dry throughout hook moonlight egg fly pack bought moral";
+const PUBLICKEY =
+  "becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32";
 const ACCOUNTID = "5950989589159323752";
 const ACCOUNTRS = "ARDOR-9C5A-J3PY-UEG3-7BK77";
 
-
 describe("Ardor functions", function () {
-
   describe("secretPhraseToPublicKey", function () {
-
-    it('should return the correct publicKey', function ()  {
+    it("should return the correct publicKey", function () {
       expect(account.secretPhraseToPublicKey(PASSPHRASE)).toBe(PUBLICKEY);
     });
-
   });
 
   describe("publicKeyToAccountId", () => {
-
     it("should return the correct account id", () => {
       expect(account.publicKeyToAccountId(PUBLICKEY, true)).toBe(ACCOUNTID);
     });
@@ -25,41 +23,44 @@ describe("Ardor functions", function () {
     it("should return the correct account RS", () => {
       expect(account.publicKeyToAccountId(PUBLICKEY, false)).toBe(ACCOUNTRS);
     });
-
   });
 
   describe("rsConvert", () => {
-
     it("should return the correct account id and account RS", () => {
-      expect(account.rsConvert(ACCOUNTID)).toStrictEqual({ account: ACCOUNTID, accountRS: ACCOUNTRS });
+      expect(account.rsConvert(ACCOUNTID)).toStrictEqual({
+        account: ACCOUNTID,
+        accountRS: ACCOUNTRS,
+      });
     });
-
   });
 
   describe("signTransactionBytes", () => {
-
     describe("sendMoney", () => {
-
       it("should match unsignedTxBytes with signedTexBytes from the API", () => {
         // Generated on http://localhost:26876/test Ardor v2.2.2
-        const unsignedTxBytes = "02000000000001711174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc72e803000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aad6190065b5226ed2a6603900000000000000000000000000000000000000000000000000000000000000000000000000000000";
-        const signedTxBytes = "02000000000001711174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc72e803000000000000c0c62d0000000000bfb61a5240d5552d16809f81206f4696313b3da3324cb17150b1202ac4faef0c1a96ccc53afd3e29722b84b29589d3c0c40dd55dc8a4a5d49ffcc367dee106a6aad6190065b5226ed2a6603900000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        const unsignedTxBytes =
+          "02000000000001711174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc72e803000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000aad6190065b5226ed2a6603900000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        const signedTxBytes =
+          "02000000000001711174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc72e803000000000000c0c62d0000000000bfb61a5240d5552d16809f81206f4696313b3da3324cb17150b1202ac4faef0c1a96ccc53afd3e29722b84b29589d3c0c40dd55dc8a4a5d49ffcc367dee106a6aad6190065b5226ed2a6603900000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
-        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(signedTxBytes);
+        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(
+          signedTxBytes
+        );
       });
-
     });
 
     describe("transferAsset", () => {
-
-      it('should return transaction bytes as the API', () => {
+      it("should return transaction bytes as the API", () => {
         // Generated on http://localhost:26876/test Ardor v2.2.2
-        const unsignedTxBytes = "02000000020101fd1174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc720000000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b9d61900082fb63f13ff402a0000000001ed61e00849facc000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
-        const expectedOutput = "02000000020101fd1174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc720000000000000000c0c62d00000000000da242993f662e0bb759b6d69d6dd64a1defd2de97da0e098bcd0927c63b1104ae427925ce1c9d56b09c666e28ae3572160f400cce6dd3b08fd607bf070fee01b9d61900082fb63f13ff402a0000000001ed61e00849facc000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        const unsignedTxBytes =
+          "02000000020101fd1174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc720000000000000000c0c62d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b9d61900082fb63f13ff402a0000000001ed61e00849facc000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+        const expectedOutput =
+          "02000000020101fd1174020f00becb4fc50718637b08605be95b741856f3af681982e5285ec38c7d9750e4ec32a19039796f8ecc720000000000000000c0c62d00000000000da242993f662e0bb759b6d69d6dd64a1defd2de97da0e098bcd0927c63b1104ae427925ce1c9d56b09c666e28ae3572160f400cce6dd3b08fd607bf070fee01b9d61900082fb63f13ff402a0000000001ed61e00849facc000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 
-        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(expectedOutput);
+        expect(account.signTransactionBytes(unsignedTxBytes, PASSPHRASE)).toBe(
+          expectedOutput
+        );
       });
-
     });
 
     describe("sendMoneyV2", () => {
@@ -152,5 +153,4 @@ describe("Ardor functions", function () {
       });
     });
   });
-
 });
